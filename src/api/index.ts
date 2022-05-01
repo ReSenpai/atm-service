@@ -41,7 +41,7 @@ export const tinkoffAPI = {
           },
           filters: {
             currencies: [currency],
-            showUnavailable: true,
+            showUnavailable: false,
           },
           zoom: 8,
         }

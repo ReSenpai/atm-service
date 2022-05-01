@@ -47,10 +47,18 @@ apiV1.get('/atm', async (req: AtmRequest, res) => {
       }
       idArr.push(point.id);
       return true;
-    });
+    })
+    .map((point) => ({
+      id: point.id,
+      location: point.location,
+      address: point.address,
+      currencyBalance: point.limits.map((currency) => ({
+        currency: currency.currency,
+        amount: currency.amount,
+      })),
+    }));
 
   res.send(JSON.stringify(points, null, 2));
-  res.send('test');
 });
 
 module.exports = apiV1;
